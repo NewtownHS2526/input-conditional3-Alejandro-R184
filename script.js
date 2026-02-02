@@ -23,9 +23,9 @@
 //   3. The status message area (id="status")
 // --------------------------------------------
 
-const textBox = 
-const outputBox = 
-const statusBox = 
+const textBox = document.querySelector("#user-input");
+const outputBox = document.querySelector("#quiz-outputs");
+const statusBox = document.querySelector("#status");
 
 // This console.log helps us verify our selections worked correctly.
 // Open the browser's Developer Tools (F12) to see the output.
@@ -61,7 +61,7 @@ let pluto = false;
 
 const checkAnswer = () => {
   // Get the current value from the text input
-  
+  currentAnswer = textBox.value;
 
   // TODO: Create if/else if/else statements to check for each planet.
   // For each correct answer:
@@ -71,27 +71,46 @@ const checkAnswer = () => {
   //   - Display an error message in the statusBox
 
   if (currentAnswer === "Mercury") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Mercury is the closest planet to the Sun, and the smallest planet in our solar system";
   } else if (currentAnswer === "Venus") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Venus is the second planet from the Sun.";
   } else if (currentAnswer === "Earth") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Earth, our home planet, is the third planet from the Sun and the only known world in the universe to support life.";
   } else if (currentAnswer === "Mars") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Mars is the fourth planet from the Sun. It is also known as the 'Red Planet', for its orange-red appearance.";
   } else if (currentAnswer === "Jupiter") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Jupiter is the fifth planet from the Sun and the largest in the Solar System, possessing over twice the mass of all other planets combined.";
   } else if (currentAnswer === "Saturn") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Saturn is the sixth planet from the Sun and the second-largest in our solar system, renowned for its dazzling, complex ring system made of ice and rock.";
   } else if (currentAnswer === "Uranus") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Uranus is the seventh planet from the Sun, classified as an ice giant with a distinct cyan-blue color due to methane in its atmosphere.";
   } else if (currentAnswer === "Neptune") {
-
+  score += 1;
+  statusBox.textContent = "correct!";
+  outputBox.textcontent = "Neptune is the eighth and farthest planet from the Sun, located about 2.8 billion miles away, making it invisible to the naked eye. ";
   } else if (currentAnswer === "Pluto") {
     // Secret bonus answer - Pluto was reclassified as a dwarf planet in 2006
-  
+  score += 1;
+  pluto = true;
+  statusBox.textContent = "correct!!";
+  outputBox.textcontent = "pluto was reclassified as a dwarf planet in 2006";
   } else {
     // If no conditions match, show an error message
-  
+  statusBox.textContent = "answer is wrong or left blank";
   }
 
   // After checking the answer, verify if the game is complete
@@ -115,10 +134,10 @@ const checkAnswer = () => {
 
 const checkScore = () => {
   if (score === 8) {
-   
+    statusBox.textContent = "all answers were correct!";
   }
   if (score === 8 && pluto) {
-    
+    textBox.disabled = true;
     // Disable the text box since the game is complete
     
   }
@@ -142,3 +161,4 @@ const checkScore = () => {
 //   - Calls the checkAnswer function when triggered
 // --------------------------------------------
 
+textBox.addEventListener("change", checkAnswer);
